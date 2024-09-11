@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Activity Tracker Dashboard</h1>
+    
+    <div class="config-section">
+        <h2>Configuration</h2>
+        <form id="config-form">
+            <label>
+                Screenshot Interval (seconds):
+                <input type="number" id="screenshot-interval" min="1" value="{{ screenshot_interval }}">
+            </label>
+            <label>
+                Blur Screenshots:
+                <input type="checkbox" id="screenshot-blur" {% if screenshot_blur %}checked{% endif %}>
+            </label>
+            <label>
+                Enable Screenshots:
+                <input type="checkbox" id="screenshot-enabled" {% if screenshot_enabled %}checked{% endif %}>
+            </label>
+            <button type="submit">Update Configuration</button>
+        </form>
+    </div>
+
+    <div class="activity-logs">
+        <h2>Recent Activity Logs</h2>
+        <ul id="activity-log-list"></ul>
+    </div>
+
+    <div class="screenshots">
+        <h2>Recent Screenshots</h2>
+        <div id="screenshot-grid"></div>
+    </div>
+</div>
+{% endblock %}
